@@ -7,8 +7,10 @@
 
 REST API for a SaaS billing management system. Manages clients, invoices with line items, and payment tracking with automatic status transitions.
 
-**Live demo →** `https://billing-api.up.railway.app`  
-**Swagger UI →** `https://billing-api.up.railway.app/swagger-ui.html`  
+**Live API →** `https://billing-dashboard-api-production.up.railway.app`  
+**Swagger UI →** `https://billing-dashboard-api-production.up.railway.app/swagger-ui.html`  
+**Demo account →** `demo@billflow.com` / `demo1234`  
+**Frontend →** [billing-dashboard-frontend-zeta.vercel.app](https://billing-dashboard-frontend-zeta.vercel.app)  
 **Frontend repo →** [billing-dashboard-frontend](https://github.com/Abrahamvjt95/billing-dashboard-frontend)
 
 ---
@@ -110,9 +112,11 @@ Swagger UI at `http://localhost:8080/swagger-ui.html`.
 
 | Variable | Description | Default |
 |---|---|---|
-| `DATABASE_URL` | JDBC connection URL | `jdbc:postgresql://localhost:5432/billing_dashboard` |
-| `DB_USERNAME` | Database user | `billing_user` |
-| `DB_PASSWORD` | Database password | `billing_pass` |
+| `PGHOST` | PostgreSQL host | `localhost` |
+| `PGPORT` | PostgreSQL port | `5432` |
+| `PGDATABASE` | Database name | `billing_dashboard` |
+| `PGUSER` | Database user | `billing_user` |
+| `PGPASSWORD` | Database password | `billing_pass` |
 | `JWT_SECRET` | Base64-encoded 256-bit secret | dev default (change in prod) |
 | `PORT` | Server port | `8080` |
 
