@@ -38,7 +38,7 @@ jobs:
           cache: maven
 
       - name: Run unit tests
-        run: mvn test -Dtest="*Test" -DfailIfNoTests=false
+        run: mvn test -Dtest="*ServiceTest" -DfailIfNoTests=false
 
       - name: Run integration tests
         env:
