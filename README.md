@@ -3,13 +3,13 @@
 ![Java](https://img.shields.io/badge/Java-21-ED8B00?logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.3-6DB33F?logo=springboot&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-4169E1?logo=postgresql&logoColor=white)
-![CI](https://github.com/abrahamjaimes/billing-dashboard-api/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Abrahamvjt95/billing-dashboard-api/actions/workflows/ci.yml/badge.svg)
 
 REST API for a SaaS billing management system. Manages clients, invoices with line items, and payment tracking with automatic status transitions.
 
 **Live demo →** `https://billing-api.up.railway.app`  
 **Swagger UI →** `https://billing-api.up.railway.app/swagger-ui.html`  
-**Frontend repo →** [billing-dashboard-frontend](https://github.com/abrahamjaimes/billing-dashboard-frontend)
+**Frontend repo →** [billing-dashboard-frontend](https://github.com/Abrahamvjt95/billing-dashboard-frontend)
 
 ---
 
@@ -86,7 +86,7 @@ GET    /api/v1/dashboard/stats
 
 ```bash
 # 1. Clone
-git clone https://github.com/abrahamjaimes/billing-dashboard-api.git
+git clone https://github.com/Abrahamvjt95/billing-dashboard-api.git
 cd billing-dashboard-api
 
 # 2. Create database
