@@ -42,9 +42,11 @@ jobs:
 
       - name: Run integration tests
         env:
-          DATABASE_URL: jdbc:postgresql://localhost:5432/billing_dashboard
-          DB_USERNAME: billing_user
-          DB_PASSWORD: billing_pass
+          PGHOST: localhost
+          PGPORT: 5432
+          PGDATABASE: billing_dashboard
+          PGUSER: billing_user
+          PGPASSWORD: billing_pass
           JWT_SECRET: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
         run: mvn test -Dtest="*IntegrationTest" -DfailIfNoTests=false
 
