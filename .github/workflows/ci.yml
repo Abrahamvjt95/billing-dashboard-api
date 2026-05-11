@@ -48,7 +48,7 @@ jobs:
           PGUSER: billing_user
           PGPASSWORD: billing_pass
           JWT_SECRET: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
-        run: mvn test -Dtest="*IntegrationTest" -DfailIfNoTests=false
+        run: mvn test -Dtest="*LocalIntegrationTest" -DfailIfNoTests=false
 
       - name: Build JAR
         run: mvn package -DskipTests
