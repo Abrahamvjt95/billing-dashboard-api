@@ -1,0 +1,34 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: billing-db
+    environment:
+      POSTGRES_DB: billing_dashboard
+      POSTGRES_USER: billing_user
+      POSTGRES_PASSWORD: billing_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U billing_user -d billing_dashboard"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build: .
+    container_name: billing-api
+    ports:
+      - "8080:8080"
+    environment:
+      DATABASE_URL: jdbc:postgresql://db:5432/billing_dashboard
+      DB_USERNAME: billing_user
+      DB_PASSWORD: billing_pass
+      JWT_SECRET: ${JWT_SECRET:-404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: billing_dashboard
+          POSTGRES_USER: billing_user
+          POSTGRES_PASSWORD: billing_pass
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Run unit tests
+        run: mvn test -Dtest="*Test" -DfailIfNoTests=false
+
+      - name: Run integration tests
+        env:
+          DATABASE_URL: jdbc:postgresql://localhost:5432/billing_dashboard
+          DB_USERNAME: billing_user
+          DB_PASSWORD: billing_pass
+          JWT_SECRET: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+        run: mvn test -Dtest="*IntegrationTest" -DfailIfNoTests=false
+
+      - name: Build JAR
+        run: mvn package -DskipTests
+
+      - name: Upload JAR artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: billing-dashboard-api
+          path: target/*.jar
+          retention-days: 7

@@ -1,0 +1,30 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# IDE
+.idea/
+*.iml
+*.iws
+.vscode/
+*.class
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env / secrets
+.env
+.env.local
+*.env
+
+# Logs
+*.log
+logs/
+
+# Spring Boot
+spring.log
+CLAUDE.md
+.claude/
