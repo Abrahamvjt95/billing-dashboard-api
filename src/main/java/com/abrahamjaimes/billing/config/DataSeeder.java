@@ -42,6 +42,7 @@ public class DataSeeder implements ApplicationRunner {
                 .email("demo@billflow.com")
                 .password(passwordEncoder.encode("demo1234"))
                 .role(Role.USER)
+                .enabled(true)
                 .build());
 
         // ── Clients ───────────────────────────────────────────────────────
